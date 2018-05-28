@@ -51,8 +51,8 @@ if __name__ == '__main__':
 
     dict = {}
     from vnpy.trader.app.ctaStrategy.strategy.strategyDoubleMa import DoubleMaStrategy
-    for slowWindow in range(3,30):    
-        for fastWindow in range(slowWindow+1,50):
+    for fastWindow in range(3,30):    
+        for slowWindow in range(fastWindow+1,50):
             # 在引擎中创建策略对象
             d = {
                 'fastWindow':fastWindow,
