@@ -48,6 +48,8 @@ if __name__ == '__main__':
 
     engine.clearBacktestingResult()
     
+
+    
     # for kkDev in range(1,2):
     #     # 在引擎中创建策略对象
     #     d = {
