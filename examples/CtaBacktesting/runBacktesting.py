@@ -13,7 +13,8 @@ from vnpy.trader.app.ctaStrategy.ctaBacktesting import BacktestingEngine, MINUTE
 if __name__ == '__main__':
     from vnpy.trader.app.ctaStrategy.strategy.strategyKingKeltner import KkStrategy
     from vnpy.trader.app.ctaStrategy.strategy.strategyDoubleMa import DoubleMaStrategy
-    
+    from vnpy.trader.app.ctaStrategy.strategy.strategyPosDoubleMa import DoubleMaPosStrategy
+
     # 创建回测引擎
     engine = BacktestingEngine()
     # 设置引擎的回测模式为K线
@@ -38,7 +39,7 @@ if __name__ == '__main__':
         }
     print ("  "+'argument' + str(d))
 
-    engine.initStrategy(DoubleMaStrategy, d)
+    engine.initStrategy(DoubleMaPosStrategy, d)
 
     # 开始跑回测
     engine.runBacktesting()
