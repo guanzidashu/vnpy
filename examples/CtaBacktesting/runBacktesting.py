@@ -27,7 +27,7 @@ if __name__ == '__main__':
     
     engine.setSlippage(0.2)     # 股指1跳
     engine.setRate(0.3/10000)   # 万0.3
-    engine.setSize(300)         # 股指合约大小
+    # engine.setSize(300)         # 股指合约大小
     engine.setPriceTick(0.2)    # 股指最小价格变动
 
     # 设置使用的历史数据库
