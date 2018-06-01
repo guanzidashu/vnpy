@@ -34,8 +34,8 @@ if __name__ == '__main__':
     engine.setDatabase(MINUTE_DB_NAME, 'rb0000')
 
     d = {
-        'fastWindow':3,
-        "slowWindow":4,
+        'fastWindow':10,
+        "slowWindow":60,
         }
     print ("  "+'argument' + str(d))
 
