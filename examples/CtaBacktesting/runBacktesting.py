@@ -29,7 +29,7 @@ if __name__ == '__main__':
     engine.setRate(0.3/10000)   # 万0.3
     # engine.setSize(300)         # 股指合约大小
     engine.setPriceTick(0.2)    # 股指最小价格变动
-    engine.setMarginRatio(0.4)
+    engine.setMarginRatio(0.5)
 
     # 设置使用的历史数据库
     engine.setDatabase(MINUTE_DB_NAME, 'rb0000')
