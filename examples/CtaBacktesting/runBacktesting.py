@@ -15,6 +15,8 @@ if __name__ == '__main__':
     from vnpy.trader.app.ctaStrategy.strategy.strategyKingKeltner import KkStrategy
     from vnpy.trader.app.ctaStrategy.strategy.strategyDoubleMa import DoubleMaStrategy
     from vnpy.trader.app.ctaStrategy.strategy.strategyPosDoubleMa import DoubleMaPosStrategy
+    from vnpy.trader.app.ctaStrategy.strategy.strategyPosMa import MaPosStrategy
+
 
     # 创建回测引擎
     engine = BacktestingEngine()
@@ -27,7 +29,7 @@ if __name__ == '__main__':
     # 设置产品相关参数
     
     engine.setSlippage(0.0)     # 股指1跳
-    engine.setRate(0.3/10000)   # 万0.3
+    engine.setRate(1.6/10000)   # 万0.3
     # engine.setSize(300)         # 股指合约大小
     engine.setPriceTick(0.2)    # 股指最小价格变动
     engine.setMarginRatio(1)
@@ -35,21 +37,21 @@ if __name__ == '__main__':
     # 设置使用的历史数据库
     engine.setDatabase(MINUTE_DB_NAME, 'rb0000')
 
-    d = {
-        'fastWindow':35,
-        "slowWindow":70,
-        }
-    print ("  "+'argument' + str(d))
+    # d = {
+    #     'fastWindow':35,
+    #     "slowWindow":70,
+    #     }
+    # print ("  "+'argument' + str(d))
 
-    engine.initStrategy(DoubleMaPosStrategy, d)
+    # engine.initStrategy(MaPosStrategy, d)
 
-    # 开始跑回测
-    engine.runBacktesting()
-    print("xxxxx")
-    # 显示回测结果
-    engine.showBacktestingResult()
+    # # 开始跑回测
+    # engine.runBacktesting()
+    # print("xxxxx")
+    # # 显示回测结果
+    # engine.showBacktestingResult()
 
-    engine.clearBacktestingResult()
+    # engine.clearBacktestingResult()
     
 
     
@@ -87,7 +89,7 @@ if __name__ == '__main__':
                 }
             print ("  "+'argument' + str(d))
 
-            engine.initStrategy(DoubleMaPosStrategy, d)
+            engine.initStrategy(MaPosStrategy, d)
 
             # 开始跑回测
             engine.runBacktesting()
