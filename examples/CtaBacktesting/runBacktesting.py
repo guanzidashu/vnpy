@@ -27,29 +27,29 @@ if __name__ == '__main__':
     # 设置产品相关参数
     
     engine.setSlippage(0.0)     # 股指1跳
-    engine.setRate(0.3/10000)   # 万0.3
+    engine.setRate(0.0/10000)   # 万0.3
     # engine.setSize(300)         # 股指合约大小
     engine.setPriceTick(0.2)    # 股指最小价格变动
     engine.setMarginRatio(1)
 
     # 设置使用的历史数据库
-    engine.setDatabase(MINUTE_DB_NAME, 'IF0000')
+    engine.setDatabase(MINUTE_DB_NAME, 'rb0000')
 
-    # d = {
-    #     'fastWindow':30,
-    #     "slowWindow":55,
-    #     }
-    # print ("  "+'argument' + str(d))
+    d = {
+        'fastWindow':35,
+        "slowWindow":70,
+        }
+    print ("  "+'argument' + str(d))
 
-    # engine.initStrategy(DoubleMaPosStrategy, d)
+    engine.initStrategy(DoubleMaPosStrategy, d)
 
-    # # 开始跑回测
-    # engine.runBacktesting()
-    # print("xxxxx")
-    # # 显示回测结果
-    # engine.showBacktestingResult()
+    # 开始跑回测
+    engine.runBacktesting()
+    print("xxxxx")
+    # 显示回测结果
+    engine.showBacktestingResult()
 
-    # engine.clearBacktestingResult()
+    engine.clearBacktestingResult()
     
 
     
@@ -72,48 +72,48 @@ if __name__ == '__main__':
     #     engine.clearBacktestingResult()
 
 
-    x = 10 
-    y = 20
-    step = 5
-    dict = {}
-    array = np.zeros((x-1,y-2))
-    from vnpy.trader.app.ctaStrategy.strategy.strategyDoubleMa import DoubleMaStrategy
-    for fastWindow in range(step,x*step,step):    
-        for slowWindow in range(fastWindow+step,y*step, step):
-            # 在引擎中创建策略对象
-            d = {
-                'fastWindow':fastWindow,
-                "slowWindow":slowWindow,
-                }
-            print ("  "+'argument' + str(d))
+    # x = 25 
+    # y = 50
+    # step = 5
+    # dict = {}
+    # array = np.zeros((x-1,y-2))
+    # from vnpy.trader.app.ctaStrategy.strategy.strategyDoubleMa import DoubleMaStrategy
+    # for fastWindow in range(step,x*step,step):    
+    #     for slowWindow in range(fastWindow+step,y*step, step):
+    #         # 在引擎中创建策略对象
+    #         d = {
+    #             'fastWindow':fastWindow,
+    #             "slowWindow":slowWindow,
+    #             }
+    #         print ("  "+'argument' + str(d))
 
-            engine.initStrategy(DoubleMaPosStrategy, d)
+    #         engine.initStrategy(DoubleMaPosStrategy, d)
 
-            # 开始跑回测
-            engine.runBacktesting()
+    #         # 开始跑回测
+    #         engine.runBacktesting()
 
-            # 显示回测结果
-            d_r = engine.showBacktestingResult()
-            dict[str(d)] = int(d_r['annualInterestRate']*100)
-            array[fastWindow/step-1][slowWindow/step-2] = int(d_r['annualInterestRate']*100)
-            engine.clearBacktestingResult()
-            print(dict)
-
-
-    print(dict)
-    import pandas as pd
-    import matplotlib.pyplot as plt
-    import seaborn as sns
-    import json
+    #         # 显示回测结果
+    #         d_r = engine.showBacktestingResult()
+    #         dict[str(d)] = int(d_r['annualInterestRate']*100)
+    #         array[fastWindow/step-1][slowWindow/step-2] = int(d_r['annualInterestRate']*100)
+    #         engine.clearBacktestingResult()
+    #         print(dict)
 
 
+    # print(dict)
+    # import pandas as pd
+    # import matplotlib.pyplot as plt
+    # import seaborn as sns
+    # import json
 
-    df = pd.DataFrame(array, columns=range(2*step, y*(step), step), index=range(step,x*(step),step))
 
-    sns.heatmap(df,annot=True)
-    plt.savefig(str(x)+ "_"+str(y)+'DoubleMaPosStrategy.png')
 
-    plt.show()
+    # df = pd.DataFrame(array, columns=range(2*step, y*(step), step), index=range(step,x*(step),step))
+
+    # sns.heatmap(df,annot=True)
+    # plt.savefig(str(x)+ "_"+str(y)+'IFhuadianemaDoubleMaPosStrategy.png')
+
+    # plt.show()
 
 
 
