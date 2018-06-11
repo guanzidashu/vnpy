@@ -35,7 +35,7 @@ if __name__ == '__main__':
     engine.setMarginRatio(1)
 
     # 设置使用的历史数据库
-    engine.setDatabase(MINUTE_DB_NAME, 'rb0000')
+    engine.setDatabase(MINUTE_DB_NAME, 'IF0000')
 
     # d = {
     #     'fastWindow':35,
@@ -73,15 +73,16 @@ if __name__ == '__main__':
 
     #     engine.clearBacktestingResult()
 
-
-    x = 25 
-    y = 50
+    x_start = 1
+    y_start = 1
+    x = 15 
+    y = 40
     step = 5
     dict = {}
     array = np.zeros((x-1,y-2))
     from vnpy.trader.app.ctaStrategy.strategy.strategyDoubleMa import DoubleMaStrategy
-    for fastWindow in range(step,x*step,step):    
-        for slowWindow in range(fastWindow+step,y*step, step):
+    for fastWindow in range(x_start*step,x*step,step):    
+        for slowWindow in range(max(fastWindow+step,y_start*step),y*step, step):
             # 在引擎中创建策略对象
             d = {
                 'fastWindow':fastWindow,
